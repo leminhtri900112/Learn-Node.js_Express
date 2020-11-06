@@ -65,6 +65,15 @@ app.post('/users/remove', function(req, res) {
     res.redirect('/users')
 });
 
+app.get('/users/:id', function(req, res) {
+    var id = req.params.id;
+    id = parseInt(id);
+    var user = db.get('users').find({id: id}).value()
+    res.render('users/view',{
+        user: user
+    })
+})
+
 app.listen(port, () => {
   console.log(`Webserver listening ${port}`)
 })
