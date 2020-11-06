@@ -3,6 +3,7 @@ var app = express()
 var port = 3000
 var app = require('express')()
 var bodyParser = require('body-parser')
+var shortid = require('shortid');
 
 // Lowdb
 app.set('view engine', 'pug')
@@ -34,12 +35,15 @@ app.get('/users', function(req, res) {
 });
 app.get('/users/search', function(req, res) {
     // console.log(req.query.q);
+    // console.log(db.get('users').value());
     var q = req.query.q;
-    var elementFilter = users.filter(function(element) {
+    var elementFilter = db.get('users').value().filter(function(element) {
         return element.name.toLowerCase().indexOf(q) !== -1;
     })
-    res.render('users/index',{
+    console.log(elementFilter)
+    res.render('users/search',{
         users: elementFilter
+        
     })
 });
 app.get('/users/create', function(req, res) {
@@ -47,7 +51,7 @@ app.get('/users/create', function(req, res) {
 });
 app.post('/users/create', function(req, res) {
     var newUsers = req.body
-    newUsers.id = parseInt(newUsers.id);
+    newUsers.id = shortid.generate();
     db.get('users').push(newUsers).write();
     // console.log(newUsers);
     // console.log(users);
@@ -58,16 +62,16 @@ app.get('/users/remove', function(req, res) {
 })
 app.post('/users/remove', function(req, res) {
     var removeUsers = req.body
-    removeUsers.id = parseInt(removeUsers.id);
+    // console.log(removeUsers);
+    // removeUsers.id = parseInt(removeUsers.id);
     db.get('users')
-     .remove(removeUsers)
+     .remove({name: removeUsers.name})
      .write()
     res.redirect('/users')
 });
 
 app.get('/users/:id', function(req, res) {
     var id = req.params.id;
-    id = parseInt(id);
     var user = db.get('users').find({id: id}).value()
     res.render('users/view',{
         user: user

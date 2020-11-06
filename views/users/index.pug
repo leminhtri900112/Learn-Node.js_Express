@@ -6,7 +6,7 @@ form(action="/users/search", method="get")
     input(name="q" ,type="text")
     button Search
 ul
-    each user in users
+    each user in db.get('users').value()
         li
             span= user.name
             span &nbsp;
