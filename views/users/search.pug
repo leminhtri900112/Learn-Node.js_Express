@@ -1,9 +1,11 @@
-h1  Search User 
-ul
-    each user in users
-        li
-            span= user.name
-            span &nbsp;
-            a(href="/users/"+ user.id) View
+extend ../layout/common.pug
+block content
+    h1  Search User 
+    ul
+        each user in users
+            li
+                span= user.name
+                span &nbsp;
+                a(href="/users/"+ user.id) View
             
         
