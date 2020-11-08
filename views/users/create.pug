@@ -2,6 +2,15 @@ extend ../layout/common.pug
 block content
     h1 Create users
     form(action="/users/create", method="post")
-        label Name
-        input(name="name", type="text")
-        button Add
+        .form-group
+            label(for='exampleInputName') Name
+            input#exampleInputName.form-control(name="name", type='text', placeholder='Input Name')
+        .form-group
+            label(for='exampleInputPhone') Phone
+            input#exampleInputPhone.form-control(name="phone", type='text', placeholder='Input Phone')
+        button.btn.btn-primary Add
+
+    //- form(action="/users/create", method="post")
+    //-     label Name
+    //-     input(name="name", type="text")
+    //-     button Add

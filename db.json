@@ -1,20 +1,14 @@
 {
   "users": [
     {
-      "name": "khang",
-      "id": "a-U3zKlQA"
+      "name": "Le Minh Tri",
+      "phone": "0971967013",
+      "id": "KZ5gLuvAp"
     },
     {
-      "name": "qui",
-      "id": "aCdAoZSjz"
-    },
-    {
-      "name": "ngoc",
-      "id": "J4bJBo2ke"
-    },
-    {
-      "name": "",
-      "id": "EBeP2QLe8"
+      "name": "Ho Minh Duc",
+      "phone": "12358687694",
+      "id": "n6rkxqy7u"
     }
   ]
 }
