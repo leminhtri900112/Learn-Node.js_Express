@@ -4,7 +4,10 @@ html
         //- link(rel="stylesheet", href="/styles/custom.css")
     body
         nav.navbar.navbar-expand-lg.navbar-light.bg-light
-            a.navbar-brand(href='#') Leminhtri
+            .card(style='width: 4rem;')
+                img.card-img-top(src='/img/dai_dien.jpg', alt='hinh dai dien')
+            //- img(src="/img/dai_dien.jpg", alt="hinh dai dien")
+            a.navbar-brand.pl-3(href='https://www.facebook.com/le.minhtri.eeac.gts/') Leminhtri
             button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarNav.collapse.navbar-collapse
@@ -13,5 +16,6 @@ html
                         a.nav-link(href='/') Home
                     li.nav-item
                         a.nav-link(href='/users') User
+            
         .container.pt-5
             block content

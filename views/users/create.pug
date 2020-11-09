@@ -1,13 +1,17 @@
 extend ../layout/common.pug
 block content
     h1 Create users
+    if errors
+        each error in errors
+            .alert.alert-danger= error
     form(action="/users/create", method="post")
+        
         .form-group
             label(for='exampleInputName') Name
-            input#exampleInputName.form-control(name="name", type='text', placeholder='Input Name')
+            input#exampleInputName.form-control(name="name", type='text', placeholder='Input Name', value= value ? value.name : "")
         .form-group
             label(for='exampleInputPhone') Phone
-            input#exampleInputPhone.form-control(name="phone", type='text', placeholder='Input Phone')
+            input#exampleInputPhone.form-control(name="phone", type='text', placeholder='Input Phone', value= value ? value.phone : "")
         button.btn.btn-primary Add
 
     //- form(action="/users/create", method="post")
