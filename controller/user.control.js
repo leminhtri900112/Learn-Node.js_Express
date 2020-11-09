@@ -24,6 +24,7 @@ module.exports.search = function(req, res) {
 }
 
 module.exports.creat = function(req, res) {
+    // console.log(req.cookies)
     res.render('users/create')
 }
 
@@ -31,7 +32,7 @@ module.exports.creatPost =  function(req, res) {
     var newUsers = req.body
     newUsers.id = shortid.generate();
     db.get('users').push(newUsers).write();
-    console.log(newUsers);
+    // console.log(newUsers);
     // console.log(users);
     res.redirect('/users')
 }
