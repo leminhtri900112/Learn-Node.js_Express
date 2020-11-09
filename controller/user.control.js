@@ -29,21 +29,6 @@ module.exports.creat = function(req, res) {
 
 module.exports.creatPost =  function(req, res) {
     var newUsers = req.body
-    var errors = [];
-    if (!newUsers.name) {
-        errors.push('Name is required');
-    }
-    if (!newUsers.phone) {
-        errors.push('Phone is required');
-    }
-    if (errors.length) {
-        res.render('users/create',{
-            errors: errors,
-            value: newUsers
-        });
-        // console.log(errors)
-        return;
-    }
     newUsers.id = shortid.generate();
     db.get('users').push(newUsers).write();
     console.log(newUsers);

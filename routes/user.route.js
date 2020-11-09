@@ -1,11 +1,11 @@
 var express = require('express');
 var controler = require('../controller/user.control')
+var middleError = require('../middleware/middle.error')
 var router = express.Router();
-
 router.get('/', controler.home)
 router.get('/search', controler.search)
 router.get('/create', controler.creat)
-router.post('/create', controler.creatPost)
+router.post('/create', middleError.middleError, controler.creatPost)
 router.get('/remove', controler.remove) 
 router.post('/remove', controler.removePost)
 router.get('/:id', controler.id)
