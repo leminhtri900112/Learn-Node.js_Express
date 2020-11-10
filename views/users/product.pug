@@ -1,0 +1,15 @@
+extend ../layout/common.pug
+block content
+    .container
+            .row.row-cols-4
+                each product in products
+                    .col
+                        .card(style='width: 15rem;')
+                            img.card-img-top(src=product.imge, alt='...')
+                            .card-body
+                                h5.card-title Card title
+                                p.card-text
+                                | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                                a.btn.btn-primary(href='#') Go somewhere
+                        
+                        

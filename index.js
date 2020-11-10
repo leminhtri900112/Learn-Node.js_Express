@@ -3,6 +3,7 @@ var app = require('express')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 
+var usersProduct = require('./routes/product.route.js')
 var usersRouter = require('./routes/user.route.js')
 var authRouter = require('./routes/auth.route.js')
 var authMiddle = require('./middleware/auth.middleware')
@@ -25,7 +26,9 @@ app.get('/', function(req, res) {
 });
 
 app.use('/users', authMiddle.authMiddleware, usersRouter);
-app.use('/auth' , authRouter)
+app.use('/auth' , authRouter);
+app.use('/product' , usersProduct);
+
 
 app.listen(port, () => {
   console.log(`Webserver listening ${port}`)
