@@ -1,3 +1,4 @@
+var md5 = require('md5')
 var db = require('../lowdb')
 
 module.exports.login = function(req, res) {
@@ -15,14 +16,17 @@ module.exports.loginPost =  function(req, res) {
         });
         return
     }
-    if (user.password !== password) {
+    var md5Password = md5(password)
+    if (user.password !== md5Password) {
         res.render('auth/login',{
             errors: ['Wrong password'],
             value: req.body
         });
         return
     }
-    res.cookie('auth_id', user.id)
+    res.cookie('auth_id', user.id, {
+        signed: true
+    })
     res.redirect('/users')
 }
 
