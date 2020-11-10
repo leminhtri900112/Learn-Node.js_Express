@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser')
 
 var usersRouter = require('./routes/user.route.js')
 var authRouter = require('./routes/auth.route.js')
+var authMiddle = require('./middleware/auth.middleware')
+
 
 var app = express()
 var port = 3000
@@ -22,7 +24,7 @@ app.get('/', function(req, res) {
     })
 });
 
-app.use('/users', usersRouter);
+app.use('/users', authMiddle.authMiddleware, usersRouter);
 app.use('/auth' , authRouter)
 
 app.listen(port, () => {

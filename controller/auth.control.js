@@ -22,7 +22,7 @@ module.exports.loginPost =  function(req, res) {
         });
         return
     }
-    
+    res.cookie('auth_id', user.id)
     res.redirect('/users')
 }
 
