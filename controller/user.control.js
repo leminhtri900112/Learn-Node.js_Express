@@ -30,6 +30,7 @@ module.exports.creat = function(req, res) {
 
 module.exports.creatPost =  function(req, res) {
     var newUsers = req.body
+        newUsers.avatar = req.file.path.split('\\').slice(1).join('/')
     newUsers.id = shortid.generate();
     db.get('users').push(newUsers).write();
     // console.log(newUsers);
